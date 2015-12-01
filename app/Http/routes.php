@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/authors', 'AuthorController@index');
+Route::post('/author', 'AuthorController@store');
+Route::delete('/author/{author}', 'AuthorController@destroy');
