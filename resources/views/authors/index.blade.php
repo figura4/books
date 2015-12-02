@@ -34,6 +34,15 @@
                             </div>
                         </div>
 
+                        <!-- Author Bio -->
+                        <div class="form-group">
+                            <label for="author-bio" class="col-sm-3 control-label">Bio</label>
+
+                            <div class="col-sm-6">
+                                <textarea rows="4" cols="50" name="bio" id="author-bio" class="form-control" value="{{ old('author') }}"></textarea>
+                            </div>
+                        </div>
+
                         <!-- Add Task Button -->
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-6">
@@ -76,7 +85,12 @@
                                     </td>
 
                                     <td>
-                                        <!-- TODO: Delete Button -->
+                                        <form action="/author/{{ $author->id }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button>Delete Author</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
