@@ -44,6 +44,18 @@ class AuthorController extends Controller
         ]);
     }
 
+    public function create(Request $request)
+    {
+        return view('authors.createOrUpdate');
+    }
+
+    public function edit(Request $request)
+    {
+        $author = Author::find($request->id);
+        // Load user/createOrUpdate.blade.php view
+        return view('authors.createOrUpdate')->with('author', $author);
+    }
+
     /**
      * Create a new author.
      *

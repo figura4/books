@@ -89,7 +89,7 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <button>Delete Author</button>
+                                            <button class="btn btn-default">Delete Author</button>
                                         </form>
                                     </td>
                                 </tr>
