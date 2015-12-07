@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->string('original_title')->nullable();
             $table->string('original_subtitle')->nullable();
             $table->text('review');
+            $table->smallint('vote')->nullable();
             $table->dateTime('review_pub_date');
             $table->char('pages', 5)->nullable();
             $table->string('editor')->nullable();
