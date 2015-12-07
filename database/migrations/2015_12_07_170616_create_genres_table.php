@@ -15,9 +15,9 @@ class CreateReviewsTable extends Migration
             $table->string('description');
         });
         
-        Schema::create('genre_review', function (Blueprint $table) {
+        Schema::create('book_genre', function (Blueprint $table) {
             $table->integer('genre_id');
-            $table->integer('review_id');
+            $table->integer('book_id');
         });
     }
     /**
@@ -28,6 +28,6 @@ class CreateReviewsTable extends Migration
     public function down()
     {
         Schema::drop('genres');
-        Schema::drop('genre_review');
+        Schema::drop('book_genre');
     }
 }
