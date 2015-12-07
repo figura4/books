@@ -13,7 +13,7 @@
                     @include('common.errors')
 
                     @if(isset($author))
-                        {!! Form::model($author, ['action' => 'AuthorController@store', 'class' => 'form-horizontal']) !!}
+                        {!! Form::model($author, ['route' => ['AuthorController@store', $author->id], 'method' => 'patch', 'class' => 'form-horizontal']) !!}
                     @else
                         {!! Form::open(array('action' => 'AuthorController@store', 'class' => 'form-horizontal')) !!}
                     @endif

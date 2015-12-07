@@ -66,20 +66,10 @@ class AuthorController extends Controller
         $this->validate($request, [
             'last_name' => 'required|max:100',
         ]);
-        //$request->input();
         $author = new Author($request->all());
         $author->exists = $request->has('id'); // <-- Something wrong here! TODO
-        log::info('Author: '.$request->has('id'));
+        log::info('Author: '.$request->id);
         $author->save();
-        
-        /*
-        Author::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'bio' => $request->bio,
-        ]);
-        */
-
         return redirect('/authors');
     }
 
