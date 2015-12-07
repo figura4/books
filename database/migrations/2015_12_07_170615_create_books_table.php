@@ -15,15 +15,15 @@ class CreateReviewsTable extends Migration
             $table->integer('author_id');
             $table->integer('user_id');
             $table->string('italian_title');
-            $table->string('italian_subtitle');
-            $table->string('original_title');
-            $table->string('original_subtitle');
+            $table->string('italian_subtitle')->nullable();
+            $table->string('original_title')->nullable();
+            $table->string('original_subtitle')->nullable();
             $table->text('review');
             $table->dateTime('review_pub_date');
-            $table->char('pages', 5);
-            $table->string('editor');
-            $table->string('cover');
-            $table->char('pub_year', 4);
+            $table->char('pages', 5)->nullable();
+            $table->string('editor')->nullable();
+            $table->string('cover')->nullable();
+            $table->char('pub_year', 4)->nullable();
             $table->timestamps();
         });
     }
