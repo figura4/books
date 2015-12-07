@@ -12,11 +12,18 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
-            $table-> ('author_id');
-            $table-> ('user_id');
-            $table->string('first_name')->nullable();
-            $table->string('last_name');
-            $table->text('bio')->nullable();
+            $table->integer('author_id');
+            $table->integer('user_id');
+            $table->string('italian_title');
+            $table->string('italian_subtitle');
+            $table->string('original_title');
+            $table->string('original_subtitle');
+            $table->text('body');
+            $table->dateTime('pub_date');
+            $table->char('pages', 5);
+            $table->string('editor');
+            $table->string('cover');
+            $table->char('pub_year', 4);
             $table->timestamps();
         });
     }
