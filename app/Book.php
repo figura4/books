@@ -24,4 +24,9 @@ class Book extends Model
     {
         return $this->hasMany('Quote');
     }
+    
+    public function genres()
+    {
+        return $this->belongsToMany('Genre');
+    }
 }
