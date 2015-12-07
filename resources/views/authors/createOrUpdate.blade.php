@@ -13,9 +13,9 @@
                     @include('common.errors')
 
                     @if(isset($author))
-                        {!! Form::model($author, ['route' => ['author.edit', $author->id], 'method' => 'patch']) !!}
+                        {!! Form::model($author, ['route' => ['author.store', $author->id], 'method' => 'patch']) !!}
                     @else
-                        {!! Form::open(array('action' => 'AuthorController@create', 'class' => 'form-horizontal')) !!}
+                        {!! Form::open(array('action' => 'AuthorController@store', 'class' => 'form-horizontal')) !!}
                     @endif
 
                     <div class="form-group">
@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-6">
-                        {!! Form::submit('Salva', array('class' => 'btn btn-default')) !!}
+                        {!! Form::submit('<i class="fa fa-btn fa-plus"></i>Add Task', array('class' => 'btn btn-default')) !!}
                         </div>
                     </div>
                     {!! Form::close() !!}
