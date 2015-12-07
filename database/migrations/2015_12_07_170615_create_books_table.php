@@ -10,7 +10,7 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id');
             $table->integer('user_id');
@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('italian_subtitle');
             $table->string('original_title');
             $table->string('original_subtitle');
-            $table->text('body');
+            $table->text('review');
             $table->dateTime('pub_date');
             $table->char('pages', 5);
             $table->string('editor');
@@ -34,6 +34,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('reviews');
+        Schema::drop('books');
     }
 }
