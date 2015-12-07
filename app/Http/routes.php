@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Route::get('/authors', 'AuthorController@index');
 Route::get('/author/create', 'AuthorController@create');
-Route::get('/author/edit', 'AuthorController@edit');
+Route::get('/author/edit/{author}', 'AuthorController@edit');
 Route::post('/author', 'AuthorController@store');
 Route::delete('/author/{author}', 'AuthorController@destroy');

@@ -8,6 +8,7 @@ use App\Author;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\AuthorRepository;
+use Log;
 
 class AuthorController extends Controller
 {
@@ -49,10 +50,8 @@ class AuthorController extends Controller
         return view('authors.createOrUpdate');
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request, Author $author)
     {
-        $author = Author::find($request->id);
-        // Load user/createOrUpdate.blade.php view
         return view('authors.createOrUpdate')->with('author', $author);
     }
 
@@ -67,9 +66,10 @@ class AuthorController extends Controller
         $this->validate($request, [
             'last_name' => 'required|max:100',
         ]);
-        
-        $author = new Author($data);
-        $author->exists = Input::has('id');
+        //$request->input();
+        $author = new Author($request->all());
+        $author->exists = $request->has('id'); // <-- Something wrong here! TODO
+        log::info('Author: '.$request->has('id'));
         $author->save();
         
         /*
