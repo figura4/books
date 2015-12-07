@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->string('original_title');
             $table->string('original_subtitle');
             $table->text('review');
-            $table->dateTime('pub_date');
+            $table->dateTime('review_pub_date');
             $table->char('pages', 5);
             $table->string('editor');
             $table->string('cover');
