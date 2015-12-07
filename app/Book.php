@@ -9,4 +9,9 @@ class Book extends Model
      * @var array
      */
     protected $fillable = ['italian_title', 'italian_subtitle', 'original_title', 'original_subtitle', 'review', 'pub_date', 'pages', 'editor', 'cover', 'pub_year'];
+
+    public function post()
+    {
+        return $this->belongsTo('Author');
+    }
 }
