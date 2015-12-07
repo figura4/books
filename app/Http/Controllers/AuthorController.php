@@ -67,12 +67,18 @@ class AuthorController extends Controller
         $this->validate($request, [
             'last_name' => 'required|max:100',
         ]);
-
+        
+        $author = new Author($data);
+        $author->exists = Input::has('id');
+        $author->save();
+        
+        /*
         Author::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'bio' => $request->bio,
         ]);
+        */
 
         return redirect('/authors');
     }
