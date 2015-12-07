@@ -14,7 +14,7 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->integer('book_id');
             $table->text('body');
-            $table->string('source');
+            $table->string('source')->nullable();
             $table->timestamps();
         });
     }
