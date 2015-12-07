@@ -12,4 +12,9 @@ class Author extends Model
      * @var array
      */
     protected $fillable = ['first_name', 'last_name', 'bio'];
+    
+    public function books()
+    {
+        return $this->hasMany('Book');
+    }
 }
