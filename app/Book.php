@@ -19,4 +19,9 @@ class Book extends Model
     {
         return $this->belongsTo('User');
     }
+    
+    public function quotes()
+    {
+        return $this->hasMany('Quote');
+    }
 }
