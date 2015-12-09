@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('author', 'AuthorController');
+
+/*
 Route::get('/authors', 'AuthorController@index');
 Route::get('/author/create', 'AuthorController@create');
 Route::get('/author/edit/{author}', 'AuthorController@edit');
 Route::post('/author', 'AuthorController@store');
 Route::delete('/author/{author}', 'AuthorController@destroy');
+*/
