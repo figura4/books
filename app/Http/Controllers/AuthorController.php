@@ -45,11 +45,24 @@ class AuthorController extends Controller
         ]);
     }
 
+    /**
+     * Create new author.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
     public function create(Request $request)
     {
         return view('authors.createOrUpdate');
     }
 
+    /**
+     * Edit existing author.
+     *
+     * @param  Request  $request
+     * @param  Author   $author 
+     * @return Response
+     */
     public function edit(Request $request, Author $author)
     {
         return view('authors.createOrUpdate')->with('author', $author);
@@ -67,9 +80,26 @@ class AuthorController extends Controller
             'last_name' => 'required|max:100',
         ]);
         $author = new Author($request->all());
-        $author->exists = $request->has('id'); // <-- Something wrong here! TODO
-        log::info('Author: '.$request->id);
         $author->save();
+        return redirect('/authors');
+    }
+    
+    /**
+     * Update existing author.
+     *
+     * @param  Request  $request
+     * @param  Author   $author 
+     * @return Response
+     */
+    public function update(Request $request, Author $author)
+    {
+        $this->validate($request, [
+            'last_name' => 'required|max:100',
+        ]);
+        
+        $input = array_except(Input::all(), '_method');
+	    $author->update($input);
+	    
         return redirect('/authors');
     }
 
