@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\AuthorRepository;
 use Log;
+use Input;
 
 class AuthorController extends Controller
 {
@@ -81,7 +82,7 @@ class AuthorController extends Controller
         ]);
         $author = new Author($request->all());
         $author->save();
-        return redirect('/authors');
+        return redirect('/author');
     }
     
     /**
@@ -96,11 +97,11 @@ class AuthorController extends Controller
         $this->validate($request, [
             'last_name' => 'required|max:100',
         ]);
-        
+
         $input = array_except(Input::all(), '_method');
 	    $author->update($input);
 	    
-        return redirect('/authors');
+        return redirect('/author');
     }
 
     /**
@@ -114,6 +115,6 @@ class AuthorController extends Controller
     {
         $author->delete();
 
-        return redirect('/authors');
+        return redirect('/author');
     }
 }
