@@ -5,6 +5,7 @@ use App\Book;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BookRepository;
+use App\Repositories\AuthorRepository;
 use Log;
 use Input;
 
@@ -16,6 +17,7 @@ class BookController extends Controller
      * @var BookRepository
      */
     protected $books;
+    protected $authors;
     /**
      * Create a new controller instance.
      *
@@ -26,6 +28,7 @@ class BookController extends Controller
     {
         //$this->middleware('auth');
         $this->books = $books;
+        $this->authors = $authors;
     }
     /**
      * Display a list of all of the books.
@@ -47,7 +50,8 @@ class BookController extends Controller
      */
     public function create(Request $request)
     {
-        return view('book.createOrUpdate');
+    	$author_list = Author::lists('italian_title', 'id');
+        return view('book.create')->with($author_list);
     }
     /**
      * Edit existing book.
