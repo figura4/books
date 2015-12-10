@@ -14,7 +14,7 @@
 
                     @if(isset($quote))
                         {!! Form::model($quote, array('route' => array('quote.update', $quote->id), 'method' => 'PUT', 'class' => 'form-horizontal')) !!}
-
+                        
                     @else
                         {!! Form::open(array('action' => 'QuoteController@store', 'class' => 'form-horizontal')) !!}
                     @endif
@@ -22,7 +22,11 @@
                     <div class="form-group">
                         {!! Form::label('author-first_name', 'Nome', array('class' => 'col-sm-3 control-label')) !!}
                         <div class="col-sm-6">
-                            {!! echo Form::select('book_id', $book_list, null, ['class' => 'form-control']); !!}
+                            @if(isset($quote))
+                                {!! echo Form::select('book_id', $book_list, $quote->book_id, ['class' => 'form-control']); !!}
+                            @else
+                                {!! echo Form::select('book_id', $book_list, null, ['class' => 'form-control']); !!}
+                            @endif
                         </div>
                     </div>
 
