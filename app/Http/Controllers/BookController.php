@@ -79,7 +79,6 @@ class BookController extends Controller
         ]);
         $book = new Book($request->all());
         $book->save();
-        $request->session()->forget('book_create_in_progress');
         return redirect('/book');
     }
     
