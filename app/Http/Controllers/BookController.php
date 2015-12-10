@@ -50,6 +50,7 @@ class BookController extends Controller
      */
     public function create(Request $request)
     {
+    	$request->session()->put('book_create_in_progress', 'true');
     	$author_list = Author::lists('italian_title', 'id');
         return view('book.create')->with($author_list);
     }
@@ -78,6 +79,7 @@ class BookController extends Controller
         ]);
         $book = new Book($request->all());
         $book->save();
+        $request->session()->forget('book_create_in_progress');
         return redirect('/book');
     }
     
