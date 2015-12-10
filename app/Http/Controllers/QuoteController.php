@@ -28,6 +28,7 @@ class QuoteController extends Controller
     {
         //$this->middleware('auth');
         $this->quotes = $quotes;
+        $this->books = $books;
     }
     /**
      * Display a list of all of the quotes.
