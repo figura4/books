@@ -22,7 +22,7 @@
                     <div class="form-group">
                         {!! Form::label('author-first_name', 'Nome', array('class' => 'col-sm-3 control-label')) !!}
                         <div class="col-sm-6">
-                            {!! Form::text('first_name', Input::old('first_name'), array('class' => 'form-control')) !!}
+                            {!! echo Form::select('book_id', $book_list, null, ['class' => 'form-control']); !!}
                         </div>
                     </div>
 
