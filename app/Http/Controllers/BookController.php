@@ -74,6 +74,7 @@ class BookController extends Controller
     {
         $this->validate($request, [
             'italian_title' => 'required',
+            'author_id' => 'required',
         ]);
         $book = new Book($request->all());
         $book->save();
