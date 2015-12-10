@@ -12,6 +12,6 @@ class Quote extends Model
     
     public function book()
     {
-        return $this->belongsTo('Book');
+        return $this->belongsTo('App\Book');
     }
 }

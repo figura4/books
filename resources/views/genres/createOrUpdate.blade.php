@@ -20,7 +20,7 @@
                     @endif
 
                     <div class="form-group">
-                        {!! Form::label('genre-description', 'Descrizioe', array('class' => 'col-sm-3 control-label')) !!}
+                        {!! Form::label('genre-description', 'Descrizione', array('class' => 'col-sm-3 control-label')) !!}
                         <div class="col-sm-6">
                             {!! Form::text('description', Input::old('description'), array('class' => 'form-control')) !!}
                         </div>

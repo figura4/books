@@ -1,6 +1,7 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use App\Author;
 class Book extends Model
 {
     /**
@@ -12,21 +13,21 @@ class Book extends Model
 
     public function author()
     {
-        return $this->belongsTo('Author');
+        return $this->belongsTo('App\Author');
     }
     
     public function user()
     {
-        return $this->belongsTo('User');
+        return $this->belongsTo('App\User');
     }
     
     public function quotes()
     {
-        return $this->hasMany('Quote');
+        return $this->hasMany('App\Quote');
     }
     
     public function genres()
     {
-        return $this->belongsToMany('Genre');
+        return $this->belongsToMany('App\Genre');
     }
 }

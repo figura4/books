@@ -83,7 +83,7 @@ class AuthorController extends Controller
         $author = new Author($request->all());
         $author->save();
         if ($request->session()->has('book_create_in_progress')) {
-        	$request->session()->forget('book_create_in_progress')
+        	$request->session()->forget('book_create_in_progress');
         	return redirect('/book/create');
         } else {
         	return redirect('/author');

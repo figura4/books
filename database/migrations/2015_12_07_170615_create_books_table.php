@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateReviewsTable extends Migration
+class CreateBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,7 @@ class CreateReviewsTable extends Migration
             $table->string('original_title')->nullable();
             $table->string('original_subtitle')->nullable();
             $table->text('review')->nullable();
-            $table->smallint('vote')->nullable();
+            $table->smallinteger('vote')->nullable();
             $table->dateTime('review_pub_date')->nullable();
             $table->char('pages', 5)->nullable();
             $table->string('editor')->nullable();

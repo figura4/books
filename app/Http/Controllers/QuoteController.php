@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Quote;
+use App\Book;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\QuoteRepository;
@@ -24,7 +25,7 @@ class QuoteController extends Controller
      * @param  QuoteRepository  $quotes
      * @return void
      */
-    public function __construct(QuoteRepository $authors)
+    public function __construct(QuoteRepository $quotes, BookRepository $books)
     {
         //$this->middleware('auth');
         $this->quotes = $quotes;
@@ -51,7 +52,7 @@ class QuoteController extends Controller
     public function create(Request $request)
     {
     	$book_list = Book::lists('italian_title', 'id');
-        return view('quote.createOrUpdate')->with($book_list);;
+        return view('quotes.createOrUpdate')->with('book_list', $book_list);
     }
     /**
      * Edit existing quote.
@@ -62,7 +63,8 @@ class QuoteController extends Controller
      */
     public function edit(Request $request, Quote $quote)
     {
-        return view('quotes.createOrUpdate')->with('quote', $quote);
+        $book_list = Book::lists('italian_title', 'id');
+        return view('quotes.createOrUpdate')->with('quote', $quote)->with('book_list', $book_list);
     }
     /**
      * Create a new quote.

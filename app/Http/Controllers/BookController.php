@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Book;
+use App\Author;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BookRepository;
@@ -24,7 +25,7 @@ class BookController extends Controller
      * @param  BookRepository  $books
      * @return void
      */
-    public function __construct(BookRepository $books)
+    public function __construct(BookRepository $books, AuthorRepository $authors)
     {
         //$this->middleware('auth');
         $this->books = $books;
@@ -51,8 +52,8 @@ class BookController extends Controller
     public function create(Request $request)
     {
     	$request->session()->put('book_create_in_progress', 'true');
-    	$author_list = Author::lists('italian_title', 'id');
-        return view('book.create')->with($author_list);
+    	$author_list = Author::lists('last_name', 'id');
+        return view('books.create')->with('author_list', $author_list);
     }
     /**
      * Edit existing book.
@@ -63,7 +64,8 @@ class BookController extends Controller
      */
     public function edit(Request $request, Book $book)
     {
-        return view('books.createOrUpdate')->with('book', $book);
+        $author_list = Author::lists('italian_title', 'id');
+        return view('books.createOrUpdate')->with('book', $book)->with('author_list', $author_list);
     }
     /**
      * Create a new book.
@@ -78,6 +80,8 @@ class BookController extends Controller
             'author_id' => 'required',
         ]);
         $book = new Book($request->all());
+        Log::info('store:' . $book->author_id);
+        $book->author_id = $request->input('author_id');
         $book->save();
         return redirect('/book');
     }
@@ -103,7 +107,7 @@ class BookController extends Controller
      * Destroy the given book.
      *
      * @param  Request  $request
-     * @param  Author  $author
+     * @param  Book  $book
      * @return Response
      */
     public function destroy(Request $request, Book $book)

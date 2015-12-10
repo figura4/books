@@ -23,8 +23,8 @@
                     
                     <div class="form-group">
                         {!! Form::label('book-author', 'Autore', array('class' => 'col-sm-3 control-label')) !!}
-                        {!! echo Form::select('author_id', $author_list, null, ['class' => 'form-control']); !!}
-                        Se non trovi l'autore in elenco, {{ HTML::link('/author/create', 'creane uno nuovo')}}
+                        {!! Form::select('author_id', $author_list, null, ['class' => 'form-control']) !!}
+                        Se non trovi l'autore in elenco, {!! HTML::link('/author/create', 'creane uno nuovo') !!}
                     </div>
 
                     <div class="form-group">

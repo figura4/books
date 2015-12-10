@@ -13,6 +13,6 @@ class Genre extends Model
     
     public function books()
     {
-        return $this->belongsToMany('Book');
+        return $this->belongsToMany('App\Book');
     }
 }

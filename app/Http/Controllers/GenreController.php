@@ -69,7 +69,7 @@ class GenreController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'last_name' => 'required|max:100',
+            'description' => 'required',
         ]);
         $genre = new Genre($request->all());
         $genre->save();
@@ -86,7 +86,7 @@ class GenreController extends Controller
     public function update(Request $request, Genre $genre)
     {
         $this->validate($request, [
-            'last_name' => 'required|max:100',
+            'description' => 'required|max:100',
         ]);
         $input = array_except(Input::all(), '_method');
 	    $genre->update($input);
@@ -102,7 +102,8 @@ class GenreController extends Controller
      */
     public function destroy(Request $request, Genre $genre)
     {
-        $author->delete();
+        $genre->delete();
+        Log::info('delete: ' . $genre->id);
         return redirect('/genre');
     }
 }

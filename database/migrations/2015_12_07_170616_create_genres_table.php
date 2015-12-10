@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateReviewsTable extends Migration
+class CreateGenresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateReviewsTable extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
+            $table->timestamps();
         });
         
         Schema::create('book_genre', function (Blueprint $table) {
             $table->integer('genre_id');
             $table->integer('book_id');
+            $table->timestamps();
         });
     }
     /**

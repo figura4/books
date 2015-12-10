@@ -3,11 +3,11 @@
 @section('content')
     <div class="container">
         <div class="col-sm-offset-2 col-sm-8">
-            <!-- Current Books -->
-            @if (count($books) > 0)
+            <!-- Current Quotes -->
+            @if (count($quotes) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Current Books
+                        Current Quotes
                     </div>
 
                     <div class="panel-body">
@@ -15,31 +15,24 @@
 
                             <!-- Table Headings -->
                             <thead>
-                            <th>Titolo</th>
-                            <th>Autore</th>
+                            <th>Testo</th>
                             <th>&nbsp;</th>
                             </thead>
 
                             <!-- Table Body -->
                             <tbody>
-                            @foreach ($books as $book)
+                            @foreach ($quotes as $quote)
                                 <tr>
-                                    <!-- Book Title -->
+                                    <!-- Quote text -->
                                     <td class="table-text">
-                                        <div>{{ $book->italian_title }}</div>
+                                        <div>{{ $quote->body }}</div>
                                     </td>
-                                    <!-- Book Author -->
-                                    <td class="table-text">
-                                        {{ Log::info('booktype:'.$book) }}
-                                        <div>{{ $book->author->last_name }}, {{ $book->author->first_name }}</div>
-                                    </td>
-
                                     <td>
-                                        <form action="/book/{{ $book->id }}" method="POST">
+                                        <form action="/quote/{{ $quote->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <button class="btn btn-default">Delete Book</button>
+                                            <button class="btn btn-default">Delete Quote</button>
                                         </form>
                                     </td>
                                 </tr>

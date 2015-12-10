@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-class CreateReviewsTable extends Migration
+class CreateQuotesTable extends Migration
 {
     /**
      * Run the migrations.

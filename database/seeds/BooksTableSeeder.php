@@ -13,7 +13,7 @@ class BooksTableSeeder extends Seeder
             'italian_title' => 'La stupidità dello equino',
             'review' => 'Equino sempre più stupido',
             'author_id' => '1',
-            'user_id => '1',
+            'user_id' => '1',
             'vote' => '5',
             'review_pub_date' => '12-12-2012'
         ]);
