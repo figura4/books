@@ -5,6 +5,7 @@ use App\Quote;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\QuoteRepository;
+use App\Repositories\BookRepository;
 use Log;
 use Input;
 
@@ -16,6 +17,7 @@ class QuoteController extends Controller
      * @var QuoteRepository
      */
     protected $quotes;
+    protected $books;
     /**
      * Create a new controller instance.
      *
@@ -47,7 +49,8 @@ class QuoteController extends Controller
      */
     public function create(Request $request)
     {
-        return view('quote.createOrUpdate');
+    	$book_list = Book::lists('italian_title', 'id');
+        return view('quote.createOrUpdate')->with($book_list);;
     }
     /**
      * Edit existing quote.
