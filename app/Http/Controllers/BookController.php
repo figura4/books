@@ -19,6 +19,7 @@ class BookController extends Controller
      */
     protected $books;
     protected $authors;
+    
     /**
      * Create a new controller instance.
      *
@@ -31,6 +32,7 @@ class BookController extends Controller
         $this->books = $books;
         $this->authors = $authors;
     }
+    
     /**
      * Display a list of all of the books.
      *
@@ -55,6 +57,7 @@ class BookController extends Controller
     	$author_list = Author::lists('last_name', 'id');
         return view('books.create')->with('author_list', $author_list);
     }
+    
     /**
      * Edit existing book.
      *
@@ -67,6 +70,7 @@ class BookController extends Controller
         $author_list = Author::lists('italian_title', 'id');
         return view('books.createOrUpdate')->with('book', $book)->with('author_list', $author_list);
     }
+    
     /**
      * Create a new book.
      *
@@ -78,6 +82,10 @@ class BookController extends Controller
         $this->validate($request, [
             'italian_title' => 'required',
             'author_id' => 'required',
+            'vote' => 'numeric',
+            'review_pub_date' => 'date',
+            'year' => 'numeric',
+            'pages' => 'numeric',
         ]);
         $book = new Book($request->all());
         Log::info('store:' . $book->author_id);
@@ -97,6 +105,11 @@ class BookController extends Controller
     {
         $this->validate($request, [
             'italian_title' => 'required',
+            'author_id' => 'required',
+            'vote' => 'numeric',
+            'review_pub_date' => 'date',
+            'year' => 'numeric',
+            'pages' => 'numeric',
         ]);
         $input = array_except(Input::all(), '_method');
 	    $book->update($input);
